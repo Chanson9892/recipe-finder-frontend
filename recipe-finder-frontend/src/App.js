@@ -1,7 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import {Route, Switch, withRouter} from 'react-router-dom'
 
-function App() {
+import Form from './Form'
+
+class App extends React.Component{
+  state ={
+    user: "",
+    token:""
+  }
+
+  // render
+  renderForm = (routerProps) => {
+    console.log(routerProps)
+    if(routerProps.location.pathname === "/login"){
+      return <Form name="Login Form" handleSubmit={this.handleLogin} />
+    } else if (routerProps.location.pathname === "/signup"){
+      return <Form name="Signup Form" handleSubmit={this.handleSignup} />
+    }
+  }
+  
+
   return (
     <div className="App">
       <header className="App-header">
