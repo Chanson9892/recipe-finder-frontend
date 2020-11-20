@@ -1,44 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-import {Route, Switch, withRouter} from 'react-router-dom'
+import React, { Component } from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
-import Form from './Form'
+import Header from './components/Form'
+import Login from './Login'
+import Home from './Home'
+import Navbar from './Navbar'
 
-class App extends React.Component{
-  state ={
-    user: "",
-    token:""
+export default class App extends Component{
+
+  render() {
+    return(
+    <Router>
+      <div>
+        <Header />
+        <Navbar />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+      </div>
+    </Router>
+    )
   }
-
-  // render
-  renderForm = (routerProps) => {
-    console.log(routerProps)
-    if(routerProps.location.pathname === "/login"){
-      return <Form name="Login Form" handleSubmit={this.handleLogin} />
-    } else if (routerProps.location.pathname === "/signup"){
-      return <Form name="Signup Form" handleSubmit={this.handleSignup} />
-    }
-  }
-  
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
 }
 
-export default App;
