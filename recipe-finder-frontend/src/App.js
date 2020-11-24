@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch, withRouter} from 'react-router-dom'
+import {Route, Switch, withRouter, Redirect} from 'react-router-dom'
 
 import Header from './components/Header'
 import Home from './Home'
@@ -53,6 +53,12 @@ class App extends Component {
     this.handleAuthFetch(info, `${URL}/users`)
   }
 
+  handleLogout = (user) => {
+    localStorage.removeItem('token')
+    this.setState({user: user})
+    return <Redirect to="/" push={true} />
+  }
+
   handleAuthFetch = (info, request) => {  
     fetch(request,{
       method:'POST',
@@ -87,6 +93,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={this.renderForm} />
         <Route exact path="/signup" component={this.renderForm} />
+        <Route exact path='/logout' component={() =>this.handleLogout()} />
       </Switch>
     </div>
     )

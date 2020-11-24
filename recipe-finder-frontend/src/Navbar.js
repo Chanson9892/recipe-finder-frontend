@@ -13,30 +13,10 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <NavLink
-          to="/"
-          exact
-          style={link}
-          activeStyle={{
-            background: 'blue'
-          }}
-        >Home</NavLink>
-        <NavLink
-          to="/login"
-          exact
-          style={link}
-          activeStyle={{
-            background: 'blue'
-          }}
-        >Login</NavLink>
-        <NavLink
-          to="/signup"
-          exact
-          style={link}
-          activeStyle={{
-            background: 'blue'
-          }}
-        >Sign up</NavLink>
+        <NavLink to="/" exact style={link} activeStyle={{ background: 'blue' }}  >Home</NavLink>
+        <NavLink to="/login" exact style={link} activeStyle={{ background: 'blue' }}>Login</NavLink>
+        <NavLink to="/signup" exact style={link} activeStyle={{ background: 'blue' }}>Sign up</NavLink>
+        <NavLink to="/logout" exact style={link} activeStyle={{ background: 'blue' }}>Logout</NavLink>
       </div>
     )
   }
