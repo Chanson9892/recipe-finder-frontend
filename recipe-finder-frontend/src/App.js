@@ -36,7 +36,6 @@ class App extends Component {
         this.setState({user: user})
       })
     }
-    this.handleLogin()
   }
 
   // auth
@@ -65,6 +64,7 @@ class App extends Component {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      localStorage.setItem("token", data.token)
       this.setState({user: data.user, token: data.token}, ()  =>{
         console.log(this.state)
         this.props.history.push('/')
