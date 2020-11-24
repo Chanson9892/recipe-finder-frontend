@@ -21,14 +21,22 @@ class Navbar extends Component {
             background: 'blue'
           }}
         >Home</NavLink>
-        {/* <NavLink
-          to=""
+        <NavLink
+          to="/form"
           exact
           style={link}
           activeStyle={{
             background: 'blue'
           }}
-        >Login</NavLink> */}
+        >Login</NavLink>
+        <NavLink
+          to="/form"
+          exact
+          style={link}
+          activeStyle={{
+            background: 'blue'
+          }}
+        >Sign up</NavLink>
       </div>
     )
   }
