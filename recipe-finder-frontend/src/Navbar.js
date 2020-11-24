@@ -22,7 +22,7 @@ class Navbar extends Component {
           }}
         >Home</NavLink>
         <NavLink
-          to="/form"
+          to="/login"
           exact
           style={link}
           activeStyle={{
@@ -30,7 +30,7 @@ class Navbar extends Component {
           }}
         >Login</NavLink>
         <NavLink
-          to="/form"
+          to="/signup"
           exact
           style={link}
           activeStyle={{

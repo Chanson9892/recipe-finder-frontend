@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 
 import Header from './components/Header'
 import Home from './Home'
@@ -27,13 +27,16 @@ class App extends Component {
     let token = localStorage.getItem('token')
     if (token) {
       fetch(`${URL}/profile`, {
+        // method: 'GET',
         headers: {
-          'Authentication': `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          // 'Accept': 'application/json'
         }
       })
       .then(res => res.json())
       .then(user => {
-        this.setState({user: user})
+        this.setState({user})
       })
     }
   }
@@ -57,8 +60,8 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        username: info.username,
-        password: info.password
+          username: info.username,
+          password: info.password
       })
     })
     .then(res => res.json())
@@ -67,6 +70,7 @@ class App extends Component {
       localStorage.setItem("token", data.token)
       this.setState({user: data.user, token: data.token}, ()  =>{
         console.log(this.state)
+        //redirects to home after login/signup
         this.props.history.push('/')
       }
         )
@@ -81,11 +85,12 @@ class App extends Component {
         <br></br>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/form" component={Form} />
-        </Switch>
+        <Route exact path="/login" component={this.renderForm} />
+        <Route exact path="/signup" component={this.renderForm} />
+      </Switch>
     </div>
     )
   }
 }
-export default App
+export default withRouter (App)
 

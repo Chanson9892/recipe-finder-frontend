@@ -18,9 +18,9 @@ class Form extends React.Component {
         })
       }
 
-render(){
-  return (
- 
+  render(){
+    return (
+      <div>
         <form onSubmit={this.handleSubmit}>
         <h1>{this.props.name}</h1>
         <label htmlFor="username">Username: </label>
@@ -28,9 +28,10 @@ render(){
         <label htmlFor="password">Password: </label>
         <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
         <input type="submit" value="Submit"/>
-         </form>
-        )
-    }
+        </form>
+      </div>
+    )
+  }
 }
 
 export default Form;
