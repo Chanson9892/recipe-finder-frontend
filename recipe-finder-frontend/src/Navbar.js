@@ -14,9 +14,10 @@ class Navbar extends Component {
     return (
       <div>
         <NavLink to="/" exact style={link} activeStyle={{ background: 'blue' }}  >Home</NavLink>
-        <NavLink to="/login" exact style={link} activeStyle={{ background: 'blue' }}>Login</NavLink>
-        <NavLink to="/signup" exact style={link} activeStyle={{ background: 'blue' }}>Sign up</NavLink>
-        <NavLink to="/logout" exact style={link} activeStyle={{ background: 'blue' }}>Logout</NavLink>
+        {!this.props.token && <NavLink to="/login" exact style={link} activeStyle={{ background: 'blue' }}>Login</NavLink> }
+        {!this.props.token && <NavLink to="/signup" exact style={link} activeStyle={{ background: 'blue' }}>Sign up</NavLink> }
+        {this.props.token && <button style={link} onClick={this.props.handleLogout}>Logout</button> }
+        {this.props.token && <NavLink to="/profile" exact style={link} activeStyle={{ background: 'blue' }}>View Profile</NavLink> }
       </div>
     )
   }

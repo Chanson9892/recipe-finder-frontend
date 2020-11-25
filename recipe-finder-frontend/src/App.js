@@ -2,16 +2,17 @@ import React, {Component} from 'react';
 import {Route, Switch, withRouter, Redirect} from 'react-router-dom'
 
 import Header from './components/Header'
-import Home from './Home'
+import Home from './components/Home'
 import Navbar from './Navbar'
 import Form from './Form'
+import UserProfile from './components/UserProfile'
 
 const URL = 'http://localhost:3000'
 
 class App extends Component {
   state ={
     user: "",
-    token:""
+    token: null
   }
 
   renderForm = (routerProps) => {
@@ -36,7 +37,10 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(user => {
-        this.setState({user})
+        this.setState({
+          user,
+          token
+        })
       })
     }
   }
@@ -53,9 +57,12 @@ class App extends Component {
     this.handleAuthFetch(info, `${URL}/users`)
   }
 
-  handleLogout = (user) => {
+  handleLogout = () => {
     localStorage.removeItem('token')
-    this.setState({user: user})
+    this.setState({
+      user: "",
+      token: null
+    })
     return <Redirect to="/" push={true} />
   }
 
@@ -87,13 +94,13 @@ class App extends Component {
     return(
       <div className="App">
         <Header />
-        <Navbar />
+        <Navbar handleLogout={this.handleLogout} token={this.state.token}/>
         <br></br>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={this.renderForm} />
         <Route exact path="/signup" component={this.renderForm} />
-        <Route exact path='/logout' component={() =>this.handleLogout()} />
+        <Route exact path='/profile' component={() => <UserProfile user={this.state.user.username} />} />
       </Switch>
     </div>
     )

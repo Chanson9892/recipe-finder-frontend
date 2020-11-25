@@ -14,13 +14,6 @@ export default class RecipeContainer extends Component {
         recipeURL: ""
     }
 
-    // fetch data from backend
-    // componentDidMount(){
-    //     fetch(API + `/get_recipe`)
-    //     .then((res) => res.json())
-    //     .then((data) => this.setState({recipes: data}))
-    // }
-
     // sets searchInput to whatever is typed in the search bar to
     handleSearch = (e) => {
       e.preventDefault()
@@ -29,10 +22,10 @@ export default class RecipeContainer extends Component {
       .then((data) => {
         this.setState({
           searchRecipeInput: e.target.value,
-          recipes: data,
-          recipeTitle: data.title,
-          recipeImage: data.image,
-          recipeURL: data.sourceURL
+          // recipes: data,
+          // recipeTitle: data.title,
+          // recipeImage: data.image,
+          // recipeURL: data.sourceURL
         })
       })
     }
@@ -51,9 +44,8 @@ export default class RecipeContainer extends Component {
         return (
           <Fragment>
             <SearchRecipe handleSearch={this.handleSearch}/>
-            <SearchRecipe handleSearch={this.handleSearch} recipes={this.filterNotes()}/>
             <div className='container'>
-              woo
+              <RecipeList recipes={this.filterRecipes()} />
             </div>
           </Fragment>
         );

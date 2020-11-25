@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Search = (props) => {
+const SearchRecipe = (props) => {
   return (
     <form onSubmit={props.handleSearch}>
       <label>
-        Search Recipe:
-        <input type="text" value={this.props.value} onChange={this.handleSearch} />
+        <label htmlFor="search recipe">Search Recipe: </label>
+        <input type="text" name="search recipe" value={this.props.value}/>
       </label>
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" onSubmit={this.handleSearch}/>
     </form>
   );
 }
 
-export default Search;
+export default SearchRecipe;
