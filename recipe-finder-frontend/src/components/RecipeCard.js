@@ -1,8 +1,8 @@
 import React from 'react'
 
 const RecipeCard = (props) => (
-    <div>
-        <h3>{props.recipe}</h3>
+    <div className='recipe-card'>
+        <h3>{props.recipe.title}</h3>
     </div>
 )
 

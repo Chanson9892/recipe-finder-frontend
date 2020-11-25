@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Navbar from './Navbar'
 import Form from './Form'
 import UserProfile from './components/UserProfile'
+import RecipeContainer from './containers/RecipeContainer'
 
 const URL = 'http://localhost:3000'
 
@@ -95,6 +96,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <Navbar handleLogout={this.handleLogout} token={this.state.token}/>
+        <br></br>
+        <RecipeContainer /> 
         <br></br>
       <Switch>
         <Route exact path="/" component={Home} />
