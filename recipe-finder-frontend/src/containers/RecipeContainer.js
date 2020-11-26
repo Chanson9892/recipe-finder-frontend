@@ -1,6 +1,5 @@
 // big container that holds all the recipes
 import React, { Component, Fragment } from 'react';
-import Header from '../components/Header';
 import SearchRecipe from '../components/SearchRecipe'
 import RecipeList from './RecipeList'
 
@@ -43,22 +42,13 @@ export default class RecipeContainer extends Component {
       })
     }
 
-    //filters recipes based on what is typed in the search bar and what is based on sort by
-    // filterRecipes = () => {
-    //     let filteredRecipes = [...this.state.recipes]
-    //     if(this.state.searchInput !== ''){
-    //         filteredRecipes =  filteredRecipes.filter( recipe => recipe.title.toLowerCase().includes(this.state.searchRecipeInput.toLowerCase()) ) 
-    //         return filteredRecipes     
-    //     }
-    // }
-
     render() {
         //console.log(`handleClicked = ${this.state.editClicked}`)
         return (
           <Fragment>
             <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}/>
             <div className='container'>
-              <RecipeList recipes={this.state.recipes} />
+            <RecipeList recipes={this.state.recipes} />
             </div>
           </Fragment>
         );

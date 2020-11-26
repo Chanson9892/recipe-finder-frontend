@@ -97,14 +97,14 @@ class App extends Component {
         <Header />
         <Navbar handleLogout={this.handleLogout} token={this.state.token}/>
         <br></br>
-        <RecipeContainer /> 
-        <br></br>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={this.renderForm} />
         <Route exact path="/signup" component={this.renderForm} />
         <Route exact path='/profile' component={() => <UserProfile user={this.state.user.username} />} />
       </Switch>
+      <br></br>
+      {this.state.token && <RecipeContainer /> }
     </div>
     )
   }
