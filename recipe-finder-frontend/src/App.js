@@ -104,7 +104,7 @@ class App extends Component {
         <Route exact path='/profile' component={() => <UserProfile user={this.state.user.username} />} />
       </Switch>
       <br></br>
-      {this.state.token && <RecipeContainer /> }
+      {this.state.token && <RecipeContainer  user={this.state.user}/> }
     </div>
     )
   }
