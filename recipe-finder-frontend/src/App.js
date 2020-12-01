@@ -29,7 +29,6 @@ class App extends Component {
     let token = localStorage.getItem('token')
     if (token) {
       fetch(`${URL}/profile`, {
-        // method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -38,6 +37,7 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(user => {
+        console.log(user)
         this.setState({
           user,
           token
@@ -92,6 +92,8 @@ class App extends Component {
   }
 
   render (){
+    // console.log(`user = ${this.state.user.username}`)
+    // console.log(`user favorites = `, this.state.user.favorites)
     return(
       <div className="App">
         <Header />
@@ -104,7 +106,7 @@ class App extends Component {
         <Route exact path='/profile' component={() => <UserProfile user={this.state.user.username} />} />
       </Switch>
       <br></br>
-      {this.state.token && <RecipeContainer/> }
+      {this.state.token && <RecipeContainer userFavorites={this.state.user.favorites}/> }
     </div>
     )
   }

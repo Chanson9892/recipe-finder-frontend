@@ -4,8 +4,8 @@ import FavoriteCard from '../components/FavoriteCard';
 const FavoriteList = (props) => {
     return (
         <div>
-             {props.recipes.map((recipe) => (
-                <FavoriteCard key={recipe.id} recipe={recipe} />
+             {props.userFavorites.map((userFavorite) => (
+                <FavoriteCard key={userFavorite.id} recipe={userFavorite.recipe} />
             ))}
         </div>
     )

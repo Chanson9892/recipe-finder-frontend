@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import FavoriteList from './FavoriteList';
 // import FavoriteList from './FavoriteList'
 
 const API = "http://localhost:3000"
@@ -6,11 +7,10 @@ const API = "http://localhost:3000"
 let token = localStorage.getItem('token')
 
 export default class FavoriteContainer extends Component {
-    
-    state = {
-        favoriteRecipes: [],
-        selectedFaveRecipe: {}
-    }
+    // this works if not using user serializer
+    // state = {
+    //     favoriteRecipes: []
+    // }
 
     // fetch favorites from backend
     // componentDidMount(){
@@ -25,28 +25,28 @@ export default class FavoriteContainer extends Component {
     //     .then((data) => this.setState({favoriteRecipes: data}))
     // }
 
-    // handleUnfavoriteClick = () => {
-    //     fetch(API + `/favorites/${this.state.selectedFaveRecipe.id}`, {
-    //       method: "DELETE"
-    //     })
-    //       .then(res => res.json())
-    //       .then(() => {
-    //         const recipes = [...this.state.favoriteRecipes].filter(
-    //           recipe => recipe.id !== this.state.selectedFaveRecipe.id
-    //         )
-    //         this.setState({
-    //           favoriteRecipes: recipes,
-    //           selectedFaveRecipe: {}
-    //         })
-    //     })
-    // }
+    handleUnfavoriteClick = (favorite) => {
+        fetch(API + `/favorites/${favorite.id}`, {
+          method: "DELETE"
+        })
+          .then(res => res.json())
+          .then(() => {
+            const recipes = [...this.state.favoriteRecipes].filter(
+              recipe => recipe.id !== favorite.id
+            )
+            this.setState({
+              favoriteRecipes: recipes
+            })
+        })
+    }
 
     render() {
+      console.log(`user favorites = `, this.props.userFavorites)
         return (
           <Fragment>
             <div className='container'>
-            {/* <FavoriteList recipes={this.state.favoriteRecipes} selectedFaveRecipe={this.state.selectedFaveRecipe} 
-            handleUnfavoriteClick={this.handleUnfavoriteClick}/> */}
+              {/* add a map to show the favorites through user favorites */}
+              <FavoriteList userFavorites={this.props.userFavorites} />
             </div>
           </Fragment>
         );

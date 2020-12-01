@@ -2,13 +2,14 @@
 import React, { Component, Fragment } from 'react';
 import SearchRecipe from '../components/SearchRecipe'
 import RecipeList from './RecipeList'
-// import FavoriteContainer from './FavoriteContainer'
+import FavoriteContainer from './FavoriteContainer'
 
 const API = "http://localhost:3000"
 
 let token = localStorage.getItem('token')
 
 export default class RecipeContainer extends Component {
+
     state = {
         recipes: [],
         searchRecipeInput: '',
@@ -78,11 +79,12 @@ export default class RecipeContainer extends Component {
 
     render() {
         // console.log(`favoritedRecipes = ${this.state.favoritedRecipes}`)
+        // console.log(`user favorites = ${this.props.user_favorites}`)
         return (
           <Fragment>
             <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}/>
             <div className='container'>
-              {/* <FavoriteContainer /> */}
+              <FavoriteContainer userFavorites={this.props.userFavorites}/>
               <RecipeList recipes={this.state.recipes} handleFavoriteClick={this.createRecipeOnFavoriteClick} />
             </div>
           </Fragment>
