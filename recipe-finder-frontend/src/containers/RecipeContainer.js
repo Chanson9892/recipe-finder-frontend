@@ -41,33 +41,40 @@ export default class RecipeContainer extends Component {
       })
     }
 
-    handleFavoriteClick = (recipeId) => {
-      console.log(`recipeId = ${recipeId}`)
-      let selectRecipe = this.state.recipes.filter((recipe) => recipe.id === recipeId)
-      console.log(selectRecipe[0])
-      fetch(API + `/favorites`, {
+    createRecipeOnFavoriteClick = (recipe) => {
+      let selectRecipe = this.state.recipes.filter((rec) => rec.id === recipe.id)
+      fetch(API + '/recipes', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
-          Accept: 'application/json'
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          user_id: this.props.user.id,
           api_id: selectRecipe[0].id,
           title: selectRecipe[0].title,
           image: selectRecipe[0].image,
           url: selectRecipe[0].url
         })
       })
+      .then(res => res.json())
+      .then((recipe) => this.handleFavoriteClick(recipe))
     }
 
-    // handleFavoriteClick = (recipeId) => {
-    //   let selectRecipe = this.state.recipes.filter((recipe) => recipe.id === recipeId)
-    //   this.setState({
-    //     favoritedRecipes: [...this.state.favoritedRecipes, selectRecipe.title]
-    //   })
-    // }
+    handleFavoriteClick = (recipe) => {
+      fetch(API + `/favorites`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          recipe_id: recipe.id
+        })
+      })
+    }
+
 
     render() {
         // console.log(`favoritedRecipes = ${this.state.favoritedRecipes}`)
@@ -76,7 +83,7 @@ export default class RecipeContainer extends Component {
             <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}/>
             <div className='container'>
               {/* <FavoriteContainer /> */}
-              <RecipeList recipes={this.state.recipes} handleFavoriteClick={this.handleFavoriteClick} />
+              <RecipeList recipes={this.state.recipes} handleFavoriteClick={this.createRecipeOnFavoriteClick} />
             </div>
           </Fragment>
         );

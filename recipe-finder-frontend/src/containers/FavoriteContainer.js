@@ -6,12 +6,13 @@ const API = "http://localhost:3000"
 let token = localStorage.getItem('token')
 
 export default class FavoriteContainer extends Component {
-    // fetch favorites from backend
+    
     state = {
         favoriteRecipes: [],
         selectedFaveRecipe: {}
     }
 
+    // fetch favorites from backend
     // componentDidMount(){
     //     fetch(API + '/favorites', {
 
