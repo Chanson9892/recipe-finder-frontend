@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import FavoriteList from './FavoriteList';
-// import FavoriteList from './FavoriteList'
 
 const API = "http://localhost:3000"
 
@@ -38,7 +37,7 @@ export default class FavoriteContainer extends Component {
   }
 
   render() {
-    console.log(`user favorites = `, this.props.userFavorites)
+    // console.log(`user favorites = `, this.props.userFavorites)
     return (
       <Fragment>
         <div className='container'>

@@ -81,12 +81,12 @@ export default class RecipeContainer extends Component {
 
     render() {
         // console.log(`favoritedRecipes = ${this.state.favoritedRecipes}`)
-        // console.log(`user favorites = ${this.props.user_favorites}`)
+        // console.log(`user favorites = `, this.props.userFavorites)
         return (
           <Fragment>
             <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}/>
             <div className='container'>
-              <FavoriteContainer userFavorites={this.props.userFavorites}/>
+              <FavoriteContainer userFavorites={this.props.userFavorites}/> 
               <RecipeList recipes={this.state.recipes} createRecipeOnFavoriteClick={this.createRecipeOnFavoriteClick} />
             </div>
           </Fragment>

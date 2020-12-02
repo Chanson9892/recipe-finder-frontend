@@ -92,7 +92,7 @@ class App extends Component {
 
   render (){
     // console.log(`user = ${this.state.user.username}`)
-    // console.log(`user favorites = `, this.state.user.favorites)
+    //console.log(`user favorites = `, this.state.user.favorites)
     return(
       <div className="App">
         <Header />
@@ -104,7 +104,6 @@ class App extends Component {
         <Route exact path="/signup" component={this.renderForm} />
         <Route exact path='/profile' component={() => <UserProfile user={this.state.user.username} />} />
       </Switch>
-      <br></br>
       {this.state.token && <RecipeContainer userFavorites={this.state.user.favorites}/> }
     </div>
     )
