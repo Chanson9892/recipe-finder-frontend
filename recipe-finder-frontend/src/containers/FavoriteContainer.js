@@ -25,31 +25,28 @@ export default class FavoriteContainer extends Component {
     //     .then((data) => this.setState({favoriteRecipes: data}))
     // }
 
-    handleUnfavoriteClick = (favorite) => {
-        fetch(API + `/favorites/${favorite.id}`, {
-          method: "DELETE"
-        })
-          .then(res => res.json())
-          .then(() => {
-            const recipes = [...this.state.favoriteRecipes].filter(
-              recipe => recipe.id !== favorite.id
-            )
-            this.setState({
-              favoriteRecipes: recipes
-            })
-        })
-    }
+  handleUnfavoriteClick = (favorite) => {
+    fetch(API + `/favorites/${favorite.id}`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+    })
+    .then(res => res.json())
+  }
 
-    render() {
-      console.log(`user favorites = `, this.props.userFavorites)
-        return (
-          <Fragment>
-            <div className='container'>
-              {/* add a map to show the favorites through user favorites */}
-              <FavoriteList userFavorites={this.props.userFavorites} />
-            </div>
-          </Fragment>
-        );
-    }
+  render() {
+    console.log(`user favorites = `, this.props.userFavorites)
+    return (
+      <Fragment>
+        <div className='container'>
+          {/* add a map to show the favorites through user favorites */}
+          <FavoriteList userFavorites={this.props.userFavorites} handleUnfavoriteClick={this.handleUnfavoriteClick}/>
+        </div>
+      </Fragment>
+    );
+  }
 
 }
