@@ -6,7 +6,7 @@ const RecipeList = (props) => {
     return (
         <div>
              {props.recipes.map((recipe) => (
-                <RecipeCard key={recipe.id} recipe={recipe} handleFavoriteClick={props.handleFavoriteClick}/>
+                <RecipeCard key={recipe.id} recipe={recipe} handleFavoriteClick={props.createRecipeOnFavoriteClick}/>
             ))}
          </div>
     )

@@ -55,14 +55,15 @@ export default class RecipeContainer extends Component {
           api_id: selectRecipe[0].id,
           title: selectRecipe[0].title,
           image: selectRecipe[0].image,
-          url: selectRecipe[0].url
+          url: selectRecipe[0].sourceUrl
         })
       })
       .then(res => res.json())
       .then((recipe) => this.handleFavoriteClick(recipe))
     }
 
-    handleFavoriteClick = (recipe) => {
+    handleFavoriteClick = (favorite) => {
+      console.log('got to handle favorite click')
       fetch(API + `/favorites`, {
         method: 'POST',
         headers: {
@@ -71,9 +72,10 @@ export default class RecipeContainer extends Component {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          recipe_id: recipe.id
+          recipe_id: favorite.id
         })
       })
+      .then(res => res.json())
     }
 
 
@@ -85,7 +87,7 @@ export default class RecipeContainer extends Component {
             <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}/>
             <div className='container'>
               <FavoriteContainer userFavorites={this.props.userFavorites}/>
-              <RecipeList recipes={this.state.recipes} handleFavoriteClick={this.createRecipeOnFavoriteClick} />
+              <RecipeList recipes={this.state.recipes} createRecipeOnFavoriteClick={this.createRecipeOnFavoriteClick} />
             </div>
           </Fragment>
         );
