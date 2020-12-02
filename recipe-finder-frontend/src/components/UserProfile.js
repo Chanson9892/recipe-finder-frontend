@@ -4,9 +4,9 @@ class UserProfile extends Component {
 
     render (){
         return(
-          <div className="UserProfile">
-           <h1>Username: {this.props.user}</h1>
-        </div>
+            <div className="UserProfile">
+                <h1>Username: {this.props.user}</h1>
+            </div>
         )
     }
 

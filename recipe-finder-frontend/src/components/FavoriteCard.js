@@ -6,7 +6,7 @@ const FavoriteCard = (props) => (
         <img src={props.fave.recipe.image} alt=''/>
         <button onClick={() => props.handleUnfavoriteClick(props.recipe)}>Unfavorite</button>
         <br></br>
-        <a target="_blank" href={props.fave.recipe.url}>{props.fave.recipe.url}</a>
+        <a target='_blank' rel="noreferrer" href={props.fave.recipe.url}>{props.fave.recipe.url}</a>
     </div>
 )
 

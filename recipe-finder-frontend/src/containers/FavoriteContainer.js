@@ -42,7 +42,6 @@ export default class FavoriteContainer extends Component {
     return (
       <Fragment>
         <div className='container'>
-          {/* add a map to show the favorites through user favorites */}
           <FavoriteList userFavorites={this.props.userFavorites} handleUnfavoriteClick={this.handleUnfavoriteClick}/>
         </div>
       </Fragment>
