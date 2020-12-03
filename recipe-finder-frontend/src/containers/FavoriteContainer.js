@@ -6,25 +6,12 @@ const API = "http://localhost:3000"
 let token = localStorage.getItem('token')
 
 export default class FavoriteContainer extends Component {
-    // this works if not using user serializer
-    // state = {
-    //     favoriteRecipes: []
-    // }
-
-    // fetch favorites from backend
-    // componentDidMount(){
-    //     fetch(API + '/favorites', {
-
-    //     headers: {
-    //         'Authorization': `Bearer ${token}`,
-    //         'Content-Type': 'application/json',
-    //         Accept: 'application/json'
-    //     }})
-    //     .then((res) => res.json())
-    //     .then((data) => this.setState({favoriteRecipes: data}))
-    // }
+  state = {
+    userFavorites: this.props.userFavorites
+  }
 
   handleUnfavoriteClick = (favorite) => {
+    console.log(favorite)
     fetch(API + `/favorites/${favorite.id}`, {
       method: "DELETE",
       headers: {
@@ -34,14 +21,23 @@ export default class FavoriteContainer extends Component {
       }
     })
     .then(res => res.json())
+    .then(() => {
+      const filteredFavorites = [...this.state.userFavorites].filter(
+        userFavorite => userFavorite.id !== favorite.id
+      )
+      this.setState({
+        userFavorites: filteredFavorites
+      })
+    })
   }
 
   render() {
-    // console.log(`user favorites = `, this.props.userFavorites)
+    console.log(`user favorites = `, this.props.userFavorites)
+    console.log(`favecontainer user favorites = `, this.state.userFavorites)
     return (
       <Fragment>
         <div className='container'>
-          <FavoriteList userFavorites={this.props.userFavorites} handleUnfavoriteClick={this.handleUnfavoriteClick}/>
+          <FavoriteList userFavorites={this.state.userFavorites} handleUnfavoriteClick={this.handleUnfavoriteClick}/>
         </div>
       </Fragment>
     );
