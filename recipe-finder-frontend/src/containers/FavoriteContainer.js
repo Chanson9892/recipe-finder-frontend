@@ -31,7 +31,7 @@ export default class FavoriteContainer extends Component {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      },
+      }
     })
     .then(res => res.json())
   }
