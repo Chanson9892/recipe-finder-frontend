@@ -11,23 +11,25 @@ let token = localStorage.getItem('token')
 export default class RecipeContainer extends Component {
     state={
       recipes: [],
-      searchRecipeInput: ''
+      searchRecipeInput: '',
+      ingredients: [],
+      searchIngredientInput: ''
     }
 
     // sets searchInput to whatever is typed in the search bar to
     handleSearch = (e) => {
       e.preventDefault()
-      fetch(API + `/get_recipe?query=${this.state.searchRecipeInput}`, {
+      fetch(API + `/get_recipe?titleMatch=${this.state.searchRecipeInput}&includeIngredients=${this.state.ingredients}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          // 'Accept': 'application/json'
+          'Content-Type': 'application/json'
         }
       })
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          recipes: data.results
+          recipes: data.results,
+          // searchRecipeInput: ''
         })
       })
     }
@@ -38,8 +40,28 @@ export default class RecipeContainer extends Component {
       })
     }
 
+    handleChangeIngredient = (e) => {
+      this.setState({
+        searchIngredientInput: e.target.value
+      })
+    }
+
+    handleSubmitIngredient = () => {
+      let ingredientsString = [this.state.ingredients, this.state.searchIngredientInput].join()
+      this.setState({
+        ingredients: ingredientsString,
+        searchIngredientInput: ''
+      })
+    }
+
+    clearIngredients = () => {
+      this.setState({
+        ingredients: []
+      })
+    }
+
     createRecipeOnFavoriteClick = (recipe) => {
-      let selectRecipe = [...this.state.recipes.filter((rec) => rec.id === recipe.id)]
+      let selectRecipe = this.state.recipes.filter((rec) => rec.id === recipe.id)
       fetch(API + '/recipes', {
         method: 'POST',
         headers: {
@@ -76,12 +98,15 @@ export default class RecipeContainer extends Component {
 
 
     render() {
-        // console.log( this.state.recipes)
+        console.log(this.state.recipes)
+        // console.log(`ingredients = ${this.state.ingredients}`)
         return (
           <Fragment>
-            <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}/>
+            <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}
+            handleChangeIngredient={this.handleChangeIngredient} handleSubmitIngredient={this.handleSubmitIngredient}
+            searchIngredientInput={this.state.searchIngredientInput}/>
             <div className='container'>
-              {/* <FavoriteContainer userFavorites={this.props.userFavorites}/>  */}
+              <p>Ingredients used: {this.state.ingredients}</p> <button onClick={() => this.clearIngredients()}>Clear Ingredients</button>
               <RecipeList recipes={this.state.recipes} createRecipeOnFavoriteClick={this.createRecipeOnFavoriteClick} />
             </div>
           </Fragment>
