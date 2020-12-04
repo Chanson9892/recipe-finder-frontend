@@ -9,10 +9,9 @@ const API = "http://localhost:3000"
 let token = localStorage.getItem('token')
 
 export default class RecipeContainer extends Component {
-
-    state = {
+    state={
       recipes: [],
-      searchRecipeInput: '',
+      searchRecipeInput: ''
     }
 
     // sets searchInput to whatever is typed in the search bar to
@@ -40,7 +39,7 @@ export default class RecipeContainer extends Component {
     }
 
     createRecipeOnFavoriteClick = (recipe) => {
-      let selectRecipe = this.state.recipes.filter((rec) => rec.id === recipe.id)
+      let selectRecipe = [...this.state.recipes.filter((rec) => rec.id === recipe.id)]
       fetch(API + '/recipes', {
         method: 'POST',
         headers: {
@@ -72,11 +71,12 @@ export default class RecipeContainer extends Component {
         })
       })
       .then(res => res.json())
+      .then(newFavorite => this.props.updateFavorites(newFavorite))
     }
 
 
     render() {
-        // console.log(`props favorites = `, this.props.userFavorites)
+        // console.log( this.state.recipes)
         return (
           <Fragment>
             <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}/>

@@ -84,6 +84,12 @@ class App extends Component {
     })
   }
 
+  updateFavorites = (favorite) => {
+    this.setState({
+      user: {...this.state.user, favorites: [...this.state.user.favorites, favorite]}
+    })
+  }
+
   render (){
     // console.log(`user = ${this.state.user}`)
     // console.log(`user favorites = `, this.state.user.favorites)
@@ -93,7 +99,7 @@ class App extends Component {
         <Navbar handleLogout={this.handleLogout} token={this.state.token}/>
         <br></br>
       <Switch>
-        <Route exact path="/" component={() => <Home token={this.state.token} userFavorites={this.state.user.favorites}/>} />
+        <Route exact path="/" component={() => <Home token={this.state.token} updateFavorites={this.updateFavorites}/>} />
         <Route exact path="/login" component={this.renderForm} />
         <Route exact path="/signup" component={this.renderForm} />
         <Route exact path='/profile' component={() => <Profile user={this.state.user} userFavorites={this.state.user.favorites}/>} />

@@ -6,7 +6,7 @@ class Profile extends Component {
     renderContent = () => {
         if (this.props.user) {
             return (
-                <div className="Profile">
+                <div>
                     <h1>Username: {this.props.user.username}</h1>
                     <FavoriteContainer userFavorites={this.props.userFavorites}/> 
                 </div>
@@ -16,7 +16,7 @@ class Profile extends Component {
 
     render (){
         return(
-            <div>
+            <div className="Profile">
                 {this.renderContent()}
             </div>
         )
