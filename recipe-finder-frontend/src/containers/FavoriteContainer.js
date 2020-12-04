@@ -11,7 +11,6 @@ export default class FavoriteContainer extends Component {
   }
 
   handleUnfavoriteClick = (favorite) => {
-    console.log(favorite)
     fetch(API + `/favorites/${favorite.id}`, {
       method: "DELETE",
       headers: {
@@ -32,8 +31,8 @@ export default class FavoriteContainer extends Component {
   }
 
   render() {
-    console.log(`user favorites = `, this.props.userFavorites)
-    console.log(`favecontainer user favorites = `, this.state.userFavorites)
+    // console.log(`props favorites = `, this.props.userFavorites)
+    // console.log(`state favorites = `, this.state.userFavorites)
     return (
       <Fragment>
         <div className='container'>

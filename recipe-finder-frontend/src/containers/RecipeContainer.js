@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import SearchRecipe from '../components/SearchRecipe'
 import RecipeList from './RecipeList'
-import FavoriteContainer from './FavoriteContainer'
+// import FavoriteContainer from './FavoriteContainer'
 
 const API = "http://localhost:3000"
 
@@ -13,7 +13,6 @@ export default class RecipeContainer extends Component {
     state = {
       recipes: [],
       searchRecipeInput: '',
-      // userFavorites: this.props.userFavorites
     }
 
     // sets searchInput to whatever is typed in the search bar to
@@ -73,21 +72,16 @@ export default class RecipeContainer extends Component {
         })
       })
       .then(res => res.json())
-    //   .then(newFavorite => {
-    //     this.setState({
-    //       userFavorites: [...this.state.userFavorites, newFavorite]
-    //     })
-    // })
     }
 
 
     render() {
-        // console.log(`user favorites = `, this.props.userFavorites)
+        // console.log(`props favorites = `, this.props.userFavorites)
         return (
           <Fragment>
             <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}/>
             <div className='container'>
-              <FavoriteContainer userFavorites={this.props.userFavorites}/> 
+              {/* <FavoriteContainer userFavorites={this.props.userFavorites}/>  */}
               <RecipeList recipes={this.state.recipes} createRecipeOnFavoriteClick={this.createRecipeOnFavoriteClick} />
             </div>
           </Fragment>

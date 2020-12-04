@@ -5,8 +5,8 @@ import Header from './components/Header'
 import Home from './components/Home'
 import Navbar from './Navbar'
 import Form from './Form'
-import UserProfile from './components/UserProfile'
-import RecipeContainer from './containers/RecipeContainer'
+import Profile from './components/Profile'
+// import RecipeContainer from './containers/RecipeContainer'
 
 const URL = 'http://localhost:3000'
 
@@ -17,7 +17,6 @@ class App extends Component {
   }
 
   renderForm = (routerProps) => {
-    console.log(routerProps)
     if(routerProps.location.pathname === "/login"){
       return <Form name="Login Form" handleSubmit={this.handleLogin} />
     } else if (routerProps.location.pathname === "/signup"){
@@ -47,9 +46,7 @@ class App extends Component {
 
   // auth
   handleLogin = (info) => {
-    console.log('login')
     this.handleAuthFetch(info, `${URL}/login`)
-
   }
 
   handleSignup = (info) => {
@@ -79,32 +76,28 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       localStorage.setItem("token", data.token)
       this.setState({user: data.user, token: data.token}, ()  =>{
-        console.log(this.state)
         //redirects to home after login/signup
         this.props.history.push('/')
-      }
-        )
+      })
     })
   }
 
   render (){
-    // console.log(`user = ${this.state.user.username}`)
-    //console.log(`user favorites = `, this.state.user.favorites)
+    // console.log(`user = ${this.state.user}`)
+    // console.log(`user favorites = `, this.state.user.favorites)
     return(
       <div className="App">
         <Header />
         <Navbar handleLogout={this.handleLogout} token={this.state.token}/>
         <br></br>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={() => <Home token={this.state.token} userFavorites={this.state.user.favorites}/>} />
         <Route exact path="/login" component={this.renderForm} />
         <Route exact path="/signup" component={this.renderForm} />
-        <Route exact path='/profile' component={() => <UserProfile user={this.state.user.username} />} />
+        <Route exact path='/profile' component={() => <Profile user={this.state.user} userFavorites={this.state.user.favorites}/>} />
       </Switch>
-      {this.state.token && <RecipeContainer userFavorites={this.state.user.favorites}/> }
     </div>
     )
   }
