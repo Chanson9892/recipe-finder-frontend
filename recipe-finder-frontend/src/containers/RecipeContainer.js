@@ -47,7 +47,13 @@ export default class RecipeContainer extends Component {
     }
 
     handleSubmitIngredient = () => {
-      let ingredientsString = [this.state.ingredients, this.state.searchIngredientInput].join()
+      // need to double check
+      let ingredientsString;
+      if (this.state.ingredients.length === 0){
+        ingredientsString = this.state.searchIngredientInput
+      } else {
+        ingredientsString = [this.state.ingredients, this.state.searchIngredientInput].join()
+      }
       this.setState({
         ingredients: ingredientsString,
         searchIngredientInput: ''

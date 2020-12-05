@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch, withRouter, Redirect} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 
 import Header from './components/Header'
 import Home from './components/Home'
@@ -50,7 +50,6 @@ class App extends Component {
   }
 
   handleSignup = (info) => {
-    console.log('sign up')
     this.handleAuthFetch(info, `${URL}/users`)
   }
 
@@ -60,7 +59,7 @@ class App extends Component {
       user: "",
       token: null
     })
-    return <Redirect to="/" push={true} />
+    this.props.history.push('/')
   }
 
   handleAuthFetch = (info, request) => {  
