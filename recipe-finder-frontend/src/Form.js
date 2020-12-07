@@ -22,7 +22,7 @@ class Form extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-        <h1>{this.props.name}</h1>
+        <h1 className="title">{this.props.name}</h1>
         <label htmlFor="username">Username: </label>
         <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
         <label htmlFor="password">Password: </label>

@@ -8,10 +8,10 @@ const RecipeCard = (props) => {
         <button onClick={() => props.handleFavoriteClick(props.recipe)}>Favorite</button>
         <br></br>
         <a target="_blank" rel="noreferrer" href={props.recipe.sourceUrl}>{props.recipe.sourceUrl}</a>
-        <div>Ingredients:</div>
-        <ul>
-            {props.recipe.extendedIngredients.map((ingredient) => (
-                <li key={ingredient.original}>{ingredient.original}</li>
+        <p className='missing-ingredients'>Missing Ingredients:</p>
+        <ul className='recipe-ingredients'>
+            {props.recipe.missedIngredients.map((ingredient) => (
+                <li key={ingredient.original}>{ingredient.name}</li>
             ))}
         </ul>
     </div>

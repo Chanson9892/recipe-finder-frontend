@@ -1,9 +1,11 @@
 import React from 'react';
 const Header = () => {
   return (
-    <header>
-      <h1 className="text-center">Recipe Finder</h1>
-    </header>
+    <div className='nav-bar'>
+      <div className="header">
+        <h2>Recipe Finder</h2>
+      </div>
+    </div>
   );
 }
 export default Header;

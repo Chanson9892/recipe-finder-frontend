@@ -7,7 +7,7 @@ class Home extends Component {
     if (this.props.token) {
       return <RecipeContainer updateFavorites={this.props.updateFavorites}/>
     } else {
-      return <div>Welcome to Recipe Finder! Login or Signup to find recipes!</div>
+      return <h1 className="title">Welcome to Recipe Finder! Login or Signup to find recipes!</h1>
     }
   }
 
