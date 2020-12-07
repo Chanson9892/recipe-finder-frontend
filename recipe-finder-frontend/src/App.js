@@ -70,8 +70,10 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        user: {
           username: info.username,
           password: info.password
+        }
       })
     })
     .then(res => res.json())
@@ -91,7 +93,7 @@ class App extends Component {
   }
 
   render (){
-    //console.log(`user = ${this.state.user.username}`)
+    console.log(`user = ${this.state.user.username}`)
     // console.log(`user favorites = `, this.state.user.favorites)
     return(
       <div className="App">

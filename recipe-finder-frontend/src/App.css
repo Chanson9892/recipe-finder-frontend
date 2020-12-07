@@ -71,7 +71,7 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
   width: 100%;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   /* overflow-y: scroll; */
 }

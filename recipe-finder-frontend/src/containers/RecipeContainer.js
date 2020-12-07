@@ -104,7 +104,7 @@ export default class RecipeContainer extends Component {
 
 
     render() {
-        console.log(this.state.recipes)
+        // console.log(this.state.recipes)
         // console.log(`ingredients = ${this.state.ingredients}`)
         return (
           <Fragment>
