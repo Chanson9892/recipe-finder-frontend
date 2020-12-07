@@ -35,7 +35,7 @@ export default class FavoriteContainer extends Component {
     //console.log(`state favorites = `, this.state.userFavorites)
     return (
       <Fragment>
-        <div className='container'>
+        <div className='favorite-container'>
           <FavoriteList userFavorites={this.state.userFavorites} handleUnfavoriteClick={this.handleUnfavoriteClick}/>
         </div>
       </Fragment>

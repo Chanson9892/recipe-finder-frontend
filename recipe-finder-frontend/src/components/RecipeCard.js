@@ -6,8 +6,7 @@ const RecipeCard = (props) => {
         <h3>{props.recipe.title}</h3>
         <img src={props.recipe.image} alt=''/>
         <button onClick={() => props.handleFavoriteClick(props.recipe)}>Favorite</button>
-        <br></br>
-        <a target="_blank" rel="noreferrer" href={props.recipe.sourceUrl}>{props.recipe.sourceUrl}</a>
+        <a target="_blank" rel="noreferrer" href={props.recipe.sourceUrl}>{props.recipe.sourceName}</a>
         <p className='missing-ingredients'>Missing Ingredients:</p>
         <ul className='recipe-ingredients'>
             {props.recipe.missedIngredients.map((ingredient) => (

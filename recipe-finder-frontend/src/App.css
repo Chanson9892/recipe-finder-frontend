@@ -3,7 +3,8 @@
 }
 
 * {
-  font-family: Roboto
+  font-family: Roboto;
+  box-sizing: border-box;
 }
 
 
@@ -57,7 +58,18 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
   color: white;
 }
 
-.container {
+.recipe-container {
+  width: 80%;
+  display: grid;
+  /* direction: column; */
+  grid-gap: 20px;
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+  justify-content: space-between;
+  overflow: hidden;
+  opacity: 90%;
+}
+
+.favorite-container {
   width: 80%;
   display: grid;
   /* direction: column; */
@@ -77,9 +89,21 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
   background-color: white;
 }
 
+.recipe-card img {
+  border-radius: 15px;
+  width: 100%;
+  display: block;
+}
+
 .missing-ingredients {
   color: red;
   margin: 0;
+}
+.used-ingredients{
+  background-image: linear-gradient(to right top, #9b4ceb, #6a6cdb, #70b6f8);
+  color: white;
+  padding: 2px;
+  font-size: 30px;
 }
 
 
