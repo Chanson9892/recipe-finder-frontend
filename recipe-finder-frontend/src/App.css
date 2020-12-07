@@ -7,11 +7,9 @@
   box-sizing: border-box;
 }
 
-
-
 .nav-bar {
   width: 100%;
-  background-image: linear-gradient(to right top, #9b4ceb, #6a6cdb, #70b6f8);
+  background-image: linear-gradient(to right top, #9c4cebb0, #8a8cf0, #5db1ff);
   background-repeat: no-repeat;
   font-size: 16px;
   letter-spacing: 1.5px;
@@ -20,6 +18,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  opacity: 90%;
 }
 
 .header {
@@ -28,16 +27,17 @@
 }
 
 label {
-  background-image: linear-gradient(to right top, #9b4ceb, #6a6cdb, #70b6f8);
+  background-image: linear-gradient(to right top, #9c4cebb0, #8a8cf0, #5db1ff);
   color: white;
   padding: 2px;
 }
 
 .title {
-  background-image: linear-gradient(to right top, #9b4ceb, #6a6cdb, #70b6f8);
+  background-image: linear-gradient(to right top, #9c4cebb0, #8a8cf0, #5db1ff);
   color: white;
   padding: 2px;
   font-size: 30px;
+  opacity: 90%;
 }
 
 button, input[type="submit"] {
@@ -59,40 +59,42 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
 }
 
 .recipe-container {
-  width: 80%;
+  width: 100%;
   display: grid;
-  /* direction: column; */
-  grid-gap: 20px;
-  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
-  justify-content: space-between;
-  overflow: hidden;
-  opacity: 90%;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  /* overflow-y: scroll; */
 }
 
 .favorite-container {
-  width: 80%;
+  width: 100%;
   display: grid;
-  /* direction: column; */
   grid-gap: 20px;
-  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
-  justify-content: space-between;
-  overflow: hidden;
-  opacity: 90%;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+  /* overflow-y: scroll; */
 }
 
 .recipe-card {
   margin: auto;
   border: 1px solid black;
-  border-collapse: collapse;
   border-radius: 50px;
   margin-top: 10px;
   background-color: white;
+  opacity: 90%;
+  justify-items: center;
 }
 
 .recipe-card img {
   border-radius: 15px;
-  width: 100%;
-  display: block;
+  width: 80%;
+  cursor: pointer;
+}
+
+.recipe-card:hover {
+  opacity: 100%;
+  background-color: whitesmoke;
 }
 
 .missing-ingredients {
@@ -104,41 +106,7 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
   color: white;
   padding: 2px;
   font-size: 30px;
+  opacity: 90%;
 }
 
 
-
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
