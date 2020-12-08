@@ -3,7 +3,7 @@ const Header = () => {
   return (
     <div className='nav-bar'>
       <div className="header">
-        <h2>Recipe Finder</h2>
+        <h1>Tummies for Dummies</h1>
       </div>
     </div>
   );

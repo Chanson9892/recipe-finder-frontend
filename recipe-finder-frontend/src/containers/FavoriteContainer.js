@@ -27,6 +27,7 @@ export default class FavoriteContainer extends Component {
       this.setState({
         userFavorites: filteredFavorites
       })
+      this.props.removeFavorites(filteredFavorites)
     })
   }
 

@@ -8,7 +8,7 @@ class Profile extends Component {
             return (
                 <>
                     <h1 className='title'>Username: {this.props.user.username}</h1>
-                    <FavoriteContainer userFavorites={this.props.userFavorites}/> 
+                    <FavoriteContainer userFavorites={this.props.userFavorites} removeFavorites={this.props.removeFavorites}/> 
                 </>
             )
         }
