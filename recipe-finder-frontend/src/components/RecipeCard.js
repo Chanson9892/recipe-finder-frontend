@@ -1,6 +1,8 @@
 import React from 'react'
 import { ExpandMore } from '@material-ui/icons';
 import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import IconButton from '@material-ui/core/IconButton';
 
 const RecipeCard = (props) => {
     return (
@@ -9,7 +11,10 @@ const RecipeCard = (props) => {
                 <h3>{props.recipe.title}</h3>
                 <img src={props.recipe.image} alt=''/>
             </a>
-            <button onClick={() => props.handleFavoriteClick(props.recipe)}>Favorite</button>
+            <IconButton aria-label="Favorite" onClick={() => props.handleFavoriteClick(props.recipe)}>
+                <FavoriteIcon />
+            </IconButton>
+            {/* <button onClick={() => props.handleFavoriteClick(props.recipe)}>Favorite</button> */}
             <Accordion>
                 <AccordionSummary  expandIcon={<ExpandMore />}>
                     Missing Ingredients

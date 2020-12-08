@@ -11,8 +11,8 @@ const SearchRecipe = (props) => {
       <label>
         <label htmlFor="search ingredient">Search Ingredient: </label>
         <input type="text" name="search ingredient" value={props.searchIngredientInput} onChange={props.handleChangeIngredient}/>
-        <button onClick={() => props.handleSubmitIngredient()}>Include Ingredient</button>
       </label>
+      <button onClick={() => props.handleSubmitIngredient()}>Include Ingredient</button>
 
     </form>
   );

@@ -32,7 +32,7 @@ export default class FavoriteContainer extends Component {
 
   render() {
     // console.log(`props favorites = `, this.props.userFavorites)
-    //console.log(`state favorites = `, this.state.userFavorites)
+    // console.log(`state favorites = `, this.state.userFavorites)
     return (
       <Fragment>
         <div className='favorite-container'>
