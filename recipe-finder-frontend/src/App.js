@@ -7,7 +7,6 @@ import Home from './components/Home'
 import Navbar from './Navbar'
 import Form from './Form'
 import Profile from './components/Profile'
-// import RecipeContainer from './containers/RecipeContainer'
 
 const URL = 'http://localhost:3000'
 
@@ -93,7 +92,7 @@ class App extends Component {
   }
 
   render (){
-    console.log(`user = ${this.state.user.username}`)
+    // console.log(`user = ${this.state.user.username}`)
     // console.log(`user favorites = `, this.state.user.favorites)
     return(
       <div className="App">

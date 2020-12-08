@@ -59,12 +59,12 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
 }
 
 .recipe-container {
+  /* height: calc(100vh - 5px); */
   width: 100%;
   display: grid;
   grid-column-gap: 20px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  /* overflow-y: scroll; */
+  /* overflow: scroll; */
 }
 
 .favorite-container {
@@ -72,7 +72,6 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
   /* overflow-y: scroll; */
 }
 
@@ -97,9 +96,9 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
   background-color: whitesmoke;
 }
 
-.missing-ingredients {
+.MuiAccordionSummary-content {
   color: red;
-  margin: 0;
+  font-size: 20px;
 }
 .used-ingredients{
   background-image: linear-gradient(to right top, #9b4ceb, #6a6cdb, #70b6f8);
