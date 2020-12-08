@@ -45,7 +45,7 @@ export default class CommentContainer extends Component {
 
   handleDeleteClick = (comm) => {
     fetch(API + `/comments/${comm.id}`, {
-    method: "DELETE",
+      method: "DELETE",
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
@@ -74,10 +74,12 @@ export default class CommentContainer extends Component {
               Comments
             </AccordionSummary>
             <AccordionDetails>
+               <ul>
               {this.state.comments.map((comm) => (
                 <CommentContent key={comm.id} comment={comm} handleDeleteClick={this.handleDeleteClick} 
                   updateComments={this.updateComments} />
               ))}
+              </ul>
             </AccordionDetails>
           </Accordion>
         </div>

@@ -51,41 +51,29 @@ button, input[type="submit"] {
   letter-spacing: 0.5px;
 }
 
-button:hover, .nav-bar:hover, input[type="submit"]:hover {
-  background-image: linear-gradient(to right top, #8A2387, #E94057, #F27121);
-  background-repeat: no-repeat;
-  color: white;
-}
-
 .MuiIconButton-root.MuiIconButton-root{
   padding: 3px;
 }
 
-.recipe-container {
+.container {
   /* height: calc(100vh - 5px); */
   width: 100%;
   display: grid;
-  grid-column-gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
-  /* overflow: scroll; */
-}
-
-.favorite-container {
-  width: 100%;
-  display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
-  /* overflow-y: scroll; */
+  grid-template-columns: repeat(3, 1fr);
+  /* overflow: scroll; */
 }
 
 .recipe-card {
   margin: auto;
   border: 1px solid black;
-  border-radius: 50px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
   margin-top: 10px;
   background-color: white;
   opacity: 90%;
   justify-items: center;
+  max-width: 350px;
 }
 
 .recipe-card img {
@@ -94,15 +82,11 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
   cursor: pointer;
 }
 
-.recipe-card:hover {
-  opacity: 100%;
-  background-color: whitesmoke;
-}
-
 .MuiAccordionSummary-content {
   color: red;
   font-size: 20px;
 }
+
 .used-ingredients{
   background-image: linear-gradient(to right top, #9b4ceb, #6a6cdb, #70b6f8);
   color: white;
@@ -110,5 +94,18 @@ button:hover, .nav-bar:hover, input[type="submit"]:hover {
   font-size: 30px;
   opacity: 90%;
 }
+
+
+button:hover, .nav-bar:hover, input[type="submit"]:hover, .title:hover, label:hover, .used-ingredients:hover {
+  background-image: linear-gradient(to right top, #8A2387, #E94057, #F27121);
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.recipe-card:hover {
+  opacity: 100%;
+  background-color: whitesmoke;
+}
+
 
 

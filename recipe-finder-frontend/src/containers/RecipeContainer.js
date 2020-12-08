@@ -113,7 +113,7 @@ export default class RecipeContainer extends Component {
             searchIngredientInput={this.state.searchIngredientInput}/>
             <h3 className='used-ingredients'>Ingredients used: {this.state.ingredients}</h3> 
             <button onClick={() => this.clearIngredients()}>Clear Ingredients</button>
-            <div className='recipe-container'>
+            <div className='container'>
               <RecipeList recipes={this.state.recipes} createRecipeOnFavoriteClick={this.createRecipeOnFavoriteClick} />
             </div>
           </Fragment>
