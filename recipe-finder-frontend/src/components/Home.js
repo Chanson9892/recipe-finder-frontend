@@ -7,7 +7,7 @@ class Home extends Component {
     if (this.props.token) {
       return (
         <div>
-          <h1 className="title">Search for Recipe and filter by including certain Ingredients</h1>
+          <h1 className="title">Search for Recipes and filter by including certain Ingredients</h1>
           <RecipeContainer updateFavorites={this.props.updateFavorites}/>
         </div>
       )

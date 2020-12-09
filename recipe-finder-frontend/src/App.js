@@ -100,7 +100,7 @@ class App extends Component {
 
   render (){
     // console.log(`user = ${this.state.user.username}`)
-    console.log(`user favorites = `, this.state.user.favorites)
+    // console.log(`user favorites = `, this.state.user.favorites)
     return(
       <div className="App">
         <Header />
