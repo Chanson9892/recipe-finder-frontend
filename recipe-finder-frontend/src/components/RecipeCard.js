@@ -14,7 +14,6 @@ const RecipeCard = (props) => {
             <IconButton aria-label="Favorite" onClick={() => props.handleFavoriteClick(props.recipe)}>
                 <FavoriteIcon />
             </IconButton>
-            {/* <button onClick={() => props.handleFavoriteClick(props.recipe)}>Favorite</button> */}
             <Accordion>
                 <AccordionSummary  expandIcon={<ExpandMore />}>
                     Missing Ingredients
@@ -28,7 +27,7 @@ const RecipeCard = (props) => {
                 </AccordionDetails>
             </Accordion>
         </div>
-        )
+    )
 }
 
 export default RecipeCard;

@@ -9,7 +9,7 @@ const SearchRecipe = (props) => {
       </label>
       <input type="submit" value="Submit"/>
       <label>
-        <label htmlFor="search ingredient">Search Ingredient: </label>
+        <label htmlFor="search ingredient">Include Ingredient: </label>
         <input type="text" name="search ingredient" value={props.searchIngredientInput} onChange={props.handleChangeIngredient}/>
       </label>
       <button onClick={() => props.handleSubmitIngredient()}>Include Ingredient</button>

@@ -13,7 +13,8 @@ export default class RecipeContainer extends Component {
       recipes: [],
       searchRecipeInput: '',
       ingredients: [],
-      searchIngredientInput: ''
+      searchIngredientInput: '',
+      dishTypes: []
     }
 
     // sets searchInput to whatever is typed in the search bar to
@@ -29,7 +30,6 @@ export default class RecipeContainer extends Component {
       .then((data) => {
         this.setState({
           recipes: data.results,
-          // searchRecipeInput: ''
         })
       })
     }
@@ -47,7 +47,6 @@ export default class RecipeContainer extends Component {
     }
 
     handleSubmitIngredient = () => {
-      // need to double check
       let ingredientsString;
       if (this.state.ingredients.length === 0){
         ingredientsString = this.state.searchIngredientInput
@@ -104,7 +103,7 @@ export default class RecipeContainer extends Component {
 
 
     render() {
-        // console.log(this.state.recipes)
+        console.log(this.state.dishTypes)
         // console.log(`ingredients = ${this.state.ingredients}`)
         return (
           <Fragment>
