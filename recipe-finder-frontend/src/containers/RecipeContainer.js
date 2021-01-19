@@ -31,7 +31,7 @@ export default class RecipeContainer extends Component {
         this.setState({
           recipes: data.results,
         })
-      })
+      })      
     }
 
     handleChange = (e) => {
@@ -103,8 +103,7 @@ export default class RecipeContainer extends Component {
 
 
     render() {
-        console.log(this.state.dishTypes)
-        // console.log(`ingredients = ${this.state.ingredients}`)
+        // console.log(`recipes = ${this.state.recipes}`)
         return (
           <Fragment>
             <SearchRecipe handleSearch={this.handleSearch} searchRecipeInput={this.state.searchRecipeInput} handleChange={this.handleChange}
